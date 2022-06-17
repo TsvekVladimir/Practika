@@ -1,7 +1,7 @@
 from tkinter import *
 import tkinter as tk
-from database.window.tkinter_window import root
-from databaseupdate import databupdate
+from database.window.generate_tkinter_window import root
+from database_update import datab_update
 from db import sql, db
 from datetime import datetime
 
@@ -45,11 +45,11 @@ def reg():
             for value in sql.execute(f"SELECT * FROM students WHERE login = '{userlogin}'"
                                      f"AND password = '{userpassword}'"):
                 tk.Label(root, text=value).grid(row=13, column=1)
-                tk.Button(root, text='Хотите изменить?', command=databupdate).grid(row=14, column=1)
+                tk.Button(root, text='Хотите изменить?', command=datab_update).grid(row=14, column=1)
         else:
             tk.Label(root, text="Такая запись уже существует вы вошли в учетную запись")
             for value in sql.execute(f"SELECT * FROM students WHERE login = '{userlogin}'"
                                      f"AND password = '{userpassword}'"):
                 tk.Label(root, text=value).grid(row=13, column=1)
-                tk.Button(root, text='Хотите изменить?', command=databupdate).grid(row=14, column=1)
+                tk.Button(root, text='Хотите изменить?', command=datab_update).grid(row=14, column=1)
     tk.Button(root, text="Зарегистрироваться!", command=getnewdata).grid(row=11, column=1)
